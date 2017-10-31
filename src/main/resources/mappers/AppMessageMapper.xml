@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sam.springboot.mybatis.test.AppMessageMapper">
+    <resultMap id="BaseResultMap" type="com.sam.springboot.mybatis.test.AppMessage">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="senddate" property="senddate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, message, senddate
+    </sql>
+
+    <insert id="insert" parameterType="com.sam.springboot.mybatis.test.AppMessage">
+        INSERT INTO appuser_message (id, message, senddate)
+        VALUES (#{id,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR},#{senddate,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.sam.springboot.mybatis.test.AppMessage">
+        UPDATE appuser_message SET id=#{id,jdbcType=VARCHAR}, message=#{message,jdbcType=VARCHAR},
+        senddate=#{senddate,jdbcType=TIMESTAMP}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        DELETE FROM appuser_message
+        WHERE id=#{id,jdbcType=VARCHAR}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        WHERE id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT id, message, senddate FROM appuser_message ORDER BY senddate ASC
+    </select>
+</mapper>

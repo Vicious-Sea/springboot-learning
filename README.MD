@@ -135,7 +135,7 @@ public class SpringbootApplication {
 *添加内容如下：*
 
 ```properties
-主要添加前四项，注意配置正确
+# 主要添加前四项，注意配置正确
 spring.datasource.url=jdbc:mysql://127.0.0.1:3306/test
 spring.datasource.username=root
 spring.datasource.password=123456
@@ -183,3 +183,5 @@ public class SpringbootApplicationTests {
 ## MySQL图形客户端
 >推荐使用NaviCat 强大！智能！谁用谁知道！👍 
 >Mac系统可以问我要安装包。
+
+**[更多内容请点击](http://www.samcn26.com/category/#SpringBoot)**
